@@ -14,6 +14,13 @@ Lab 1 project for "Advanced Web Technologies" — a small course catalog built w
 - `components/LikeButton.tsx` is the only Client Component (`'use client'`) in the project — it holds the like count in local `useState` and increments it on click.
 - Shared navigation (Home / Courses / About) lives in `app/layout.tsx`, styled with Tailwind CSS.
 
+## Lab 2 — Styling
+
+- Installed shadcn/ui (`button`, `card`); `CourseCard` is rebuilt with `Card`, `CardHeader`, `CardTitle`, `CardContent` and `Button` and stays a Server Component.
+- `/courses` is a responsive grid: 1 column on phones, 2 from 640px, 3 from 1024px, 4 from 1280px.
+- Navigation moved to `components/NavBar.tsx` (the only new Client Component) — hover state plus highlighting of the current page via `usePathname()`.
+- Cards, navigation and the course list follow the system dark mode via `dark:` classes.
+
 ## Getting started
 
 ```bash

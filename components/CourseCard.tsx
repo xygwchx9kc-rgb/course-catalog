@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 type CourseCardProps = {
   id: string;
@@ -8,6 +10,7 @@ type CourseCardProps = {
   likes: number;
 };
 
+// Server Component: no 'use client' needed for Card/Button.
 export function CourseCard({
   id,
   title,
@@ -16,20 +19,25 @@ export function CourseCard({
   likes,
 }: CourseCardProps) {
   return (
-    <Link
-      href={`/courses/${id}`}
-      className="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
-    >
-      <h2 className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600">
-        {title}
-      </h2>
-      <p className="mt-1.5 text-sm text-slate-500">{description}</p>
-      <div className="mt-4 flex items-center gap-3 text-sm">
-        <span className="rounded-full bg-indigo-50 px-2.5 py-1 font-medium text-indigo-700">
-          {credits} credits
-        </span>
-        <span className="text-rose-500">❤ {likes}</span>
-      </div>
+    <Link href={`/courses/${id}`} className="group block h-full">
+      <Card className="h-full hover:shadow-md hover:border-blue-300 transition dark:hover:border-blue-500">
+        <CardHeader>
+          <CardTitle className="text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+            {title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-1 flex-col gap-3">
+          <p className="text-sm text-muted-foreground">{description}</p>
+          <div className="mt-auto flex items-center justify-between">
+            <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-sm font-medium text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
+              {credits} credits
+            </span>
+            <Button variant="ghost" size="sm" className="text-rose-500">
+              ❤ {likes}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </Link>
   );
 }
